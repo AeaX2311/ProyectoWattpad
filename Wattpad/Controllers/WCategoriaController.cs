@@ -4,19 +4,19 @@ using Wattpad.Models;
 namespace Wattpad.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    public class WAutorController : ControllerBase {
+    public class WCategoriaController : ControllerBase {
         private readonly WattpadContext _context;
 
-        public WAutorController(WattpadContext context) {
+        public WCategoriaController(WattpadContext context) {
             _context = context;
         }
 
-        // GET: api/WAutor        
+        // GET: api/WCategoria
         [HttpGet]
         [Route("Get")]
         public IActionResult Get() {
-            List<WAutor> autores = _context.WAutores.ToList();
-            return StatusCode(StatusCodes.Status200OK, autores);
+            List<WCategoria> categorias = _context.WCategorias.ToList();
+            return StatusCode(StatusCodes.Status200OK, categorias);
         }
     }
 }

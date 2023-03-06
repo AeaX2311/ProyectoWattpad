@@ -1,3 +1,7 @@
+USE master
+GO
+-- DROP DATABASE Wattpad
+
 CREATE DATABASE [Wattpad]
 GO
 
@@ -14,8 +18,7 @@ CREATE TABLE w_usuarios(
 
 CREATE TABLE w_categorias(
 	id_categoria INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
-	nombre VARCHAR(100) NOT NULL,
-	descripcion VARCHAR(500) NOT NULL
+	nombre VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE w_autores(
@@ -26,7 +29,7 @@ CREATE TABLE w_autores(
 CREATE TABLE w_libros(
 	id_libro INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
 	nombre VARCHAR(100) NOT NULL,
-	portada_ruta VARCHAR(200) NULL,
+	portada_nombre_imagen VARCHAR(200) NULL,
 	descripcion VARCHAR(500) NOT NULL,
 	contenido VARCHAR(MAX) NOT NULL,
 	vistas INT NOT NULL DEFAULT 0,

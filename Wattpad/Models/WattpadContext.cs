@@ -85,10 +85,10 @@ public partial class WattpadContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("nombre");
-            entity.Property(e => e.PortadaRuta)
+            entity.Property(e => e.PortadaNombreImagen)
                 .HasMaxLength(200)
                 .IsUnicode(false)
-                .HasColumnName("portada_ruta");
+                .HasColumnName("portada_nombre_imagen");
             entity.Property(e => e.Vistas).HasColumnName("vistas");
 
             entity.HasOne(d => d.IdAutorNavigation).WithMany(p => p.WLibros)

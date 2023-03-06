@@ -9,7 +9,7 @@ public partial class WLibro
 
     public string Nombre { get; set; } = null!;
 
-    public string? PortadaRuta { get; set; }
+    public string? PortadaNombreImagen { get; set; }
 
     public string Descripcion { get; set; } = null!;
 

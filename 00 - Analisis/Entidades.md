@@ -1,32 +1,32 @@
 # Entidades
 
-## Usuario
-Id PK
-Nombre
-Correo
-Fecha de nacimiento
-Contrasenia
+## Usuario CRUD
+- Id PK
+- Nombre
+- Correo
+- Fecha de nacimiento
+- Contrasenia
 
-## Categoria
-Id PK
-Nombre
-Descripcion
+## Categoria R
+- Id PK
+- Nombre
+- Descripcion
 
-## Autor
-Id PK
-Nombre
+## Autor R
+- Id PK
+- Nombre
 
-## Libro
-Id PK
-Nombre
-Portada
-Descripcion
-Contenido
-Vistas
-Estrellas
-Tiempo estimado lectura
-Autor FK
+## Libro R
+- Id PK
+- Nombre
+- Portada
+- Descripcion
+- Contenido
+- Vistas
+- Estrellas
+- Tiempo estimado lectura
+- Autor FK
 
-## Libro categoria
-ID libro PK
-ID Categoria PK
+## Libro categoria N'A
+- ID libro PK
+- ID Categoria PK
