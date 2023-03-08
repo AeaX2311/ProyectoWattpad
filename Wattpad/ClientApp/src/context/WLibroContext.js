@@ -6,11 +6,11 @@ export function WLibroContextProvider(props) {
     const [libros, setLibros] = useState([]);
 
     useEffect(() => {
-        fetch("api/WLibro/Get")
-            .then(response => {
+        fetch("api/WLibro/GetAll")
+            .then( response => {
                 return response.json()
             })
-            .then(responseJson => {
+            .then( responseJson => {
                 setLibros(responseJson)
             })     
     }, []);

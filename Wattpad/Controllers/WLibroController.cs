@@ -2,6 +2,10 @@
 using Wattpad.Models;
 
 namespace Wattpad.Controllers {
+
+    /// <summary>
+    /// api/WLibro
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class WLibroController : ControllerBase {
@@ -11,12 +15,38 @@ namespace Wattpad.Controllers {
             _context = context;
         }
 
-        // GET: api/WLibro
+        /// <summary>
+        /// Obtener todos los libros -> api/WLibro/GetAll
+        /// </summary>
+        /// <returns>Listado completo. Todos los libros</returns>
         [HttpGet]
-        [Route("Get")]
-        public IActionResult Get() {
-            List<WLibro> libros = _context.WLibros.ToList();
-            return StatusCode(StatusCodes.Status200OK, libros);
+        [Route("GetAll")]
+        public IQueryable<WLibro> GetAll() {
+            var libros = from l in _context.WLibros
+                         select new WLibro() {
+                             IdLibro = l.IdLibro,
+                             Nombre = l.Nombre,
+                             PortadaNombreImagen = l.PortadaNombreImagen,
+                             Descripcion = l.Descripcion,
+                             Contenido = l.Contenido,
+                             Vistas = l.Vistas,
+                             Estrellas = l.Estrellas,
+                             HorasLecturaEstimadas = l.HorasLecturaEstimadas,
+                             IdAutor = l.IdAutor,
+                             Autor = new WAutor() {
+                                 IdAutor = l.Autor.IdAutor,
+                                 Nombre = l.Autor.Nombre
+                             },
+                             Categorias = _context.WCategorias
+                                                .Where(c => l.Categorias.Contains(c))
+                                                .Select(o => new WCategoria(
+                                                    o.IdCategoria,
+                                                    o.Nombre
+                                                ))
+                                                .ToList()
+                         };
+
+            return libros;
         }
     }
 }

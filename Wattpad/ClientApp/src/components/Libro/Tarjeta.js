@@ -23,8 +23,12 @@ function Tarjeta( { libro } ) {
                         { libro.nombre }
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
-                        by { libro.autor }
+                        by { libro.autor.nombre }
                     </Typography>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                        { libro.categorias.map(cat => cat.nombre + " ") } 
+                    </Typography>
+
                 </CardContent>
                 <Box sx={ { display: 'flex', alignItems: 'center', pl: 1, pb: 1 } }>
                    

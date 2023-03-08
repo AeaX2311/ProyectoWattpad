@@ -18,6 +18,8 @@ public partial class WattpadContext : DbContext {
 
     public virtual DbSet<WUsuario> WUsuarios { get; set; }
 
+    public virtual IConfiguration Configuration { get; } = null!;
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=AEAXPC;Database=Wattpad;TrustServerCertificate=True;Trusted_Connection=True;");
@@ -41,10 +43,6 @@ public partial class WattpadContext : DbContext {
             entity.ToTable("w_categorias");
 
             entity.Property(e => e.IdCategoria).HasColumnName("id_categoria");
-            entity.Property(e => e.Descripcion)
-                .HasMaxLength(500)
-                .IsUnicode(false)
-                .HasColumnName("descripcion");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -82,11 +80,11 @@ public partial class WattpadContext : DbContext {
                 .HasColumnName("portada_nombre_imagen");
             entity.Property(e => e.Vistas).HasColumnName("vistas");
 
-            entity.HasOne(d => d.IdAutorNavigation).WithMany(p => p.WLibros)
+            entity.HasOne(d => d.Autor).WithMany(p => p.WLibros)
                 .HasForeignKey(d => d.IdAutor)
                 .HasConstraintName("FK__w_libros__id_aut__2D27B809");
 
-            entity.HasMany(d => d.IdCategoria).WithMany(p => p.IdLibros)
+            entity.HasMany(d => d.Categorias).WithMany(p => p.Libros)
                 .UsingEntity<Dictionary<string, object>>(
                     "WLibroCategoriaR",
                     r => r.HasOne<WCategoria>().WithMany()

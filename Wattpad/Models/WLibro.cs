@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Wattpad.Models;
 
-namespace Wattpad.Models;
-
-public partial class WLibro
-{
+public partial class WLibro {
     public int IdLibro { get; set; }
 
     public string Nombre { get; set; } = null!;
@@ -23,7 +19,7 @@ public partial class WLibro
 
     public int IdAutor { get; set; }
 
-    public virtual WAutor IdAutorNavigation { get; set; } = null!;
+    public virtual WAutor Autor { get; set; } = null!;
 
-    public virtual ICollection<WCategoria> IdCategoria { get; } = new List<WCategoria>();
+    public virtual List<WCategoria> Categorias { get; set; } = new List<WCategoria>();
 }
