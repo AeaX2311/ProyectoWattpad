@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Wattpad.Models;
 
-public partial class WattpadContext : DbContext
-{
-    public WattpadContext()
-    {
+public partial class WattpadContext : DbContext {
+    public WattpadContext() {
     }
 
     public WattpadContext(DbContextOptions<WattpadContext> options)
-        : base(options)
-    {
+        : base(options) {
     }
 
     public virtual DbSet<WAutor> WAutores { get; set; }
@@ -27,10 +22,8 @@ public partial class WattpadContext : DbContext
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=AEAXPC;Database=Wattpad;TrustServerCertificate=True;Trusted_Connection=True;");
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<WAutor>(entity =>
-        {
+    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        modelBuilder.Entity<WAutor>(entity => {
             entity.HasKey(e => e.IdAutor).HasName("PK__w_autore__5FC3872DADD3D3AD");
 
             entity.ToTable("w_autores");
@@ -42,8 +35,7 @@ public partial class WattpadContext : DbContext
                 .HasColumnName("nombre");
         });
 
-        modelBuilder.Entity<WCategoria>(entity =>
-        {
+        modelBuilder.Entity<WCategoria>(entity => {
             entity.HasKey(e => e.IdCategoria).HasName("PK__w_catego__CD54BC5A12AA0734");
 
             entity.ToTable("w_categorias");
@@ -59,8 +51,7 @@ public partial class WattpadContext : DbContext
                 .HasColumnName("nombre");
         });
 
-        modelBuilder.Entity<WLibro>(entity =>
-        {
+        modelBuilder.Entity<WLibro>(entity => {
             entity.HasKey(e => e.IdLibro).HasName("PK__w_libros__EC09C24ED9014538");
 
             entity.ToTable("w_libros");
@@ -104,8 +95,7 @@ public partial class WattpadContext : DbContext
                     l => l.HasOne<WLibro>().WithMany()
                         .HasForeignKey("IdLibro")
                         .HasConstraintName("FK__w_libro_c__id_li__300424B4"),
-                    j =>
-                    {
+                    j => {
                         j.HasKey("IdLibro", "IdCategoria").HasName("PK__w_libro___50DC898BF06E6BED");
                         j.ToTable("w_libro_categoria_r");
                         j.IndexerProperty<int>("IdLibro").HasColumnName("id_libro");
@@ -113,8 +103,7 @@ public partial class WattpadContext : DbContext
                     });
         });
 
-        modelBuilder.Entity<WUsuario>(entity =>
-        {
+        modelBuilder.Entity<WUsuario>(entity => {
             entity.HasKey(e => e.IdUsuario).HasName("PK__w_usuari__4E3E04ADA39C4B83");
 
             entity.ToTable("w_usuarios");
