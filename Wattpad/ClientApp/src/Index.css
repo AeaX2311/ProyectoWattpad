@@ -1,0 +1,9 @@
+﻿body {
+    margin: 0;
+}
+
+.MuiContainer-root {
+    background: white;
+    box-shadow: 0 0 10px 1px #eee;
+    border-radius: 2px;
+}

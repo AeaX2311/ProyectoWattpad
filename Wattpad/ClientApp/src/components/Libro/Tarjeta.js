@@ -13,9 +13,6 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function Tarjeta( { libro } ) {
-
-    
-
     return (
         <Card sx={ { display: 'flex', height:222 } }>
             <CardMedia
@@ -28,7 +25,7 @@ function Tarjeta( { libro } ) {
             <Box sx={ { display: 'flex', flexDirection: 'column', height:200 } }>
                 <CardContent sx={ { flex: '1 0 auto' } }>
                     <Box>
-                        <Link noWrap href="#" variant="subtitle1" sx={ { fontWeight: '600', overflow: 'hidden', maxHeight: 20 } } underline="hover" color="#222">
+                        <Link noWrap href="#" variant="subtitle1" sx={ { fontWeight: '600', overflow: 'hidden', maxHeight: 20} } underline="hover" color="#222">
                             { libro.nombre }
                         </Link>
                     </Box>
